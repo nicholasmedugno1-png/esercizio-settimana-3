@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"    />
+    <title>FitEpic</title>
+    <script type="module" src="assets/js/script.js" defer></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <div id="container">
+
+        <header>
+            <div id="imgLogo"></div>
+            <div id="titleGenerale">
+                <h1>FitEpic</h1>
+                <p>il tuo personal trainer digitale</p>
+            </div>
+            <button id="Lightmode"><i class="fa-solid fa-toggle-off"></i></button>
+        </header>
+        <main>
+            <form action="">
+                <div class="formInterno">
+                    <fieldset>
+                        <legend>Aggiungi il tuo esercizio</legend>
+                        <div id="exercise">
+                            
+                            <input id="InputExercise" type="text" name="exercise" placeholder="Inserisci l'esercizio">
+                        </div>
+                        <div id="series">
+                            
+                            <input id="numberSerie" type="number" name="serie"  placeholder="numero Serie">
+                        </div>
+                        <div id="tutoring">
+                            
+                            <input id="numberTutoring" name="ripetizioni" type="number" placeholder="numero Ripetizioni">
+                        </div>
+                        <div>
+                            <button id="btnInvia" type="button">Invia</button>
+                        </div>
+                    </fieldset>
+                </div>
+            </form>
+
+             <div class="formInterno">
+<fieldset>
+                        <legend>Cerca il tuo esercio</legend>
+                    <div id="exercise">
+                        <p>completati</p>
+                        <p>preferiti</p>
+                        <p>tutti</p>
+                        <input id="barRicerca" type="text" name="exercise" placeholder="Cerca il tuo esercizio">
+                    </div>
+                    <div id="selectFiltri">
+                        <select id="filterExescise">
+                            <option value="tutti">Tutti</option>
+                            <option value="completati">Completati</option>
+                            <option value="preferiti">Preferiti</option>
+                        </select>
+                    </div>
+                    <div id="selectOrdine">
+                        <div id="select">
+                        <select id="filterExescise">
+                            <option value=""></option>
+                            <option value="">ordina: A - Z</option>
+                            <option value="">ordina: Z - A</option>
+                            <option value="">ordina: Serie</option>
+                            <option value="">ordina: Ripetizioni</option>
+                        </select>
+                            
+                       
+                    </div>
+                    
+                    </fieldset>
+                </div>
+
+
+            <div id="containerExercise">
+                <h4>I tuoi esercio</h4>
+                <div id="barEsterna"></div>
+             
+                <ul id="Lista"></ul>
+            </div>
+
+        </main>
+        <footer>
+           <ul>
+            <span>Privacy e Cookies policy</span>
+            <li><a href="">Privacy e Cookies policy</a></li>
+            <li><a href="">Franchising</a></li>
+            <li><a href="">Lavora con noi</a></li>
+            <li><a href="">Informativa Privacy</a></li>
+           </ul>
+           <ul>
+            <span>Iscriviti alla newsletter</span>
+            <li>Vuoi restare sempre aggiornato sui nostri servizi?</li>
+            <li>Iscriviti subito alla nostra newsletter </li>
+            <li><button>Iscriviti alla newsletter</button></li>
+           </ul>
+           <ul>
+            <span>I nostri Club</span>
+            <li>CERCA IL CLUB PIU' VICINO A TE</li>
+                <li><input type="text" placeholder="posizione attuale"></li>
+           </ul>
+        </footer>
+    </div>
+</body>
+
+</html>

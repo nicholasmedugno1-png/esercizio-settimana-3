@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css");
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    font-family: 'roboto';
+    background-color: rgb(233, 233, 233);
+}
+
+
+
+.darkMode {
+    background-color: black;
+    color: white;
+}
+
+
+
+
+main {
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+header {
+    background-color: darkslateblue;
+    width: 100%;
+
+}
+
+button {
+    cursor: pointer;
+}
+
+#titleGenerale {
+    padding-bottom: 10px;
+    color: antiquewhite;
+    display: inline-block;
+    vertical-align: bottom;
+    font-weight: 900;
+}
+
+#imgLogo {
+    width: 90px;
+    height: 90px;
+    background-image: url(../img/logoPalestra.png);
+    background-position: center;
+    display: inline-block;
+}
+
+.formInterno {
+    margin-top: 30px;
+    width: 70%;
+    margin: 30px auto;
+    padding: 9px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.103);
+    text-align: center;
+    border-radius: 5px;
+}
+
+.formInterno div {
+    display: inline-block;
+}
+
+#containerExercise {
+    border-radius: 5px;
+    margin: 0 auto;
+    width: 80%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.103);
+
+}
+
+#containerExercise h4 {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+#barEsterna {
+
+    margin: 0 auto;
+    background-color: rgb(2, 15, 15);
+    width: 80%;
+    height: 8px;
+    border-radius: 4px;
+
+}
+
+#Lista {
+    width: 90%;
+    margin: 10px auto;
+    list-style: none;
+}
+
+
+.liLista {
+    background-color: #fdf3de;
+    margin-bottom: 6px;
+    padding: 10px 15px;
+    border-left: 3px solid slateblue;
+    border-radius: 15px;
+}
+
+.ListaDarkMode {
+    background-color: blue;
+    color: #0e0c0a;
+}
+
+
+#Lista li span:first-child {
+    font-size: small;
+    font-weight: bolder;
+}
+
+
+
+.btnAggiungi {
+    
+    background-color: #fdf3de;
+    border: none;
+    display: inline-block;
+
+}
+
+.btnCompletato {
+    background-color: #fdf3de;
+    border: none;
+    display: inline-block;
+    }
+    
+.btnCompletato:hover {
+     background-color: black;
+    border-radius: 3px;
+    color: white;
+}
+
+.btnAggiungi:hover {
+    background-color: black;
+    border-radius: 3px;
+    color: white;
+}
+
+.btnElimina {
+    background-color: #fdf3de;
+    color: brown;
+    border: none;
+    margin-left: 10px;
+    float: right;
+}
+
+
+
+
+.btnElimina:hover {
+    background-color: black;
+    color: red;
+    border-radius: 3px;
+}
+
+
+
+
+.taskSeries {
+    margin: 0 15px;
+    background-color: black;
+    color: #fdf3de;
+    border-radius: 10px;
+    padding: 2px 4px;
+    font-size: 0.5em;
+}
+    
+
+
+fieldset {
+    border-radius: 8px;
+}
+
+.btnDarkMode {
+    background: none;
+    color: rgb(0, 0, 0);
+}
+
+footer {
+    margin: 0 auto;
+    background-color: darkslateblue;
+    text-align: center;
+    width: 100%;
+    padding: 15px;
+    }
+
+footer ul {
+    display: inline-block;
+    vertical-align: top;
+    list-style: none;
+    text-align: start;
+    margin-left: 40px;
+}
+
+footer ul li {
+    margin: 8px;
+    font-size: x-small;
+}
+
+footer ul li a {
+    text-decoration: none;
+    color: #0e0c0a;
+}
+
+footer ul li a:hover {
+    color: bisque;
+}
+
+footer ul li button {
+background-color: darkslateblue;
+border: none;
+}
+    
+footer ul li button:hover {
+    background-color: #0e0c0a;
+    color: #fdf3de;
+    border-radius: 8px;
+    padding: 2px 3px;
+}
+
+footer ul li input:focus{
+   border: 1px solid white;
+   outline: none;
+   border-radius: 2px;
+    }
+
+    
