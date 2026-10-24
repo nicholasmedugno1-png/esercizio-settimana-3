@@ -1,7 +1,7 @@
 // app per gestire i proprio esercizi quando si va in palestra 
 //un bottone per la darkmode
 // ha un input per inserire gli esercizi un numero di serie e il numero di ripetizioni
-//una barra di ricerca che ti permette di cercare l esercizi inseriti e 
+//una barra di ricerca che ti permette di cercare l esercizi inserizi 
 // una select che filtra per preferiti e completati
 // una select che mette in ordine gli esercizi !non ancora funzionante
 //barra di progresso che aumenta con esercizi completati e diminuisce se vengono eliminati !non funzionante
@@ -17,7 +17,7 @@ const LightMode = document.querySelector('#LightMode')
 const barRicerca = document.querySelector('#barRicerca')
 const filterExescise = document.querySelector('#filterExescise')
 const form = document.querySelector('form')
-
+  
 
 const myExercise = [
   {
@@ -66,8 +66,28 @@ const myExercise = [
     numTutoring: 7,
   }
 ];
-const MyPreferit = []
-const myComplet = []
+const MyPreferit = [ {
+    nameExercise: "Pushdown Tricipiti Cavo",
+    numSeries: 3,
+    numTutoring: 7,
+  }, 
+  {
+    nameExercise: "Panca Piana Bilanciere",
+    numSeries: "4",
+    numTutoring: 7,
+  },
+  {
+    nameExercise: "Curl Manubri su Panca Inclinata",
+    numSeries: 3,
+    numTutoring: 4,
+  },
+]
+const myComplet = [{
+    nameExercise: "Affondi Manubri",
+    numSeries: 3,
+    numTutoring: 5,
+  },
+]
 
 //AGGIUNGI ESERCIZIO
 btnInvia.addEventListener('click', () => {
@@ -79,9 +99,10 @@ btnInvia.addEventListener('click', () => {
       numTutoring: numberTutoring.value
     };
     myExercise.push(nuovoOggettoTask)
-    // InputExercise.value = '';
+    
     aggiungiTask();
-  contatore()
+  contatore();
+  
   form.reset()
   }
 })
@@ -163,7 +184,7 @@ if(darkModeAttiva) {
   });
 }
 aggiungiTask(myExercise);
-contatore()
+contatore();
 
 
 //gestione btn nei li tramite classi aggiunte con js
@@ -177,17 +198,20 @@ lista.addEventListener('click', (e) => {
     if(filterExescise.value === 'preferiti') {
       MyPreferit.splice(indiceDaEliminare, 1);
       aggiungiTask(MyPreferit);
-      contatore()
+      contatore();
+      salvaDati();
     }
     if(filterExescise.value === 'completati') {
       myComplet.splice(indiceDaEliminare, 1);
       aggiungiTask(myComplet);
-    contatore()
+      contatore();
+      
     }
     if(filterExescise.value === 'tutti') {
       myExercise.splice(indiceDaEliminare, 1);
       aggiungiTask(myExercise);
-      contatore()
+      contatore();
+      
     }
     alert('hai eliminato l\'esercizio');
   }
@@ -198,7 +222,8 @@ lista.addEventListener('click', (e) => {
     const esercizioSelezionato = myExercise[indexId];
     MyPreferit.push(esercizioSelezionato);
     console.log(MyPreferit);
-    contatore()
+    contatore();
+    
     alert('Hai aggiunto l\'esercizio ai preferiti');
    
   }
@@ -208,8 +233,9 @@ lista.addEventListener('click', (e) => {
     const indexId = Number(e.target.id.replace('completato-', '')) - 1;
     const esercizioCompletato = myExercise[indexId];
     myComplet.push(esercizioCompletato);
-    console.log(myComplet);
-    contatore()
+    console.log(myComplet); 
+    contatore();
+    
     alert('Hai completato l\'esercizio');
   }
 
@@ -278,14 +304,14 @@ labelRipetizioni.textContent = 'ripetizioni:'
           numTutoring: nuoveRipetizioni
         };
 
-      }
+      };
       
       
       aggiungiTask();
-      contatore()
-    }
-  }
-    })
+      contatore();
+    };
+  };
+    });
 
 //DARK MODE
 
@@ -303,7 +329,7 @@ LightMode.addEventListener('click', () => {
   formInterno.forEach((task) => {
 
     task.classList.toggle('containerExerciseDarkMode');
-  })
+  });
 
 
   const liDark = document.querySelectorAll('.liLista')
@@ -326,7 +352,7 @@ barRicerca.addEventListener('input', (e) => {
   const filtroArray = myExercise.filter(task =>
     task.nameExercise.toLowerCase().includes(cercaEsercizio));
   aggiungiTask(filtroArray);
-  contatore()
+  contatore();
 })
 
 
@@ -336,7 +362,7 @@ filterExescise.addEventListener('change', (e) => {
   const selettoreScelto = e.target.value;
   if (selettoreScelto === 'preferiti') {
     aggiungiTask(MyPreferit)
-    contatore()
+    contatore();
   } 
 
   if (selettoreScelto === 'completati') {
@@ -349,15 +375,13 @@ filterExescise.addEventListener('change', (e) => {
   }
 })
 
-//funzione modifica esercizio 
+
 
 
 function contatore() {
-const contoTotale = document.querySelector('#contatoreTutti')
-const contoPreferiti = document.querySelector('#contatorePreferiti')
+ document.querySelector('#contatoreTutti').textContent = myExercise.length
+ document.querySelector('#contatorePreferiti').textContent = MyPreferit.length
+ document.querySelector('#contatoreCompletati').textContent = myComplet.length
+ }
 
-const contoCompletati = document.querySelector('#contatoreCompletati')
-  contoTotale.textContent = myExercise.length
-  contoPreferiti.textContent = MyPreferit.length
-  contoCompletati.textContent = myComplet.length
-}
+

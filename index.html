@@ -5,7 +5,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <title>FitEpic</title>
     <script type="module" src="assets/js/script.js" defer></script>
     <link rel="stylesheet" href="assets/css/style.css">
@@ -36,22 +36,24 @@
                         </div>
                         <div id="series">
                             <label for="numberSerie">Serie:</label>
-                            <input id="numberSerie" class="inputNumber" type="text" name="serie"  placeholder="numero Serie">
+                            <input id="numberSerie" class="inputNumber" type="text" name="serie"
+                                placeholder="numero Serie">
                         </div>
                         <div id="tutoring">
                             <label for="numberTutoring">Ripetizioni:</label>
-                            <input id="numberTutoring" class="inputNumber" name="ripetizioni" type="text" placeholder="numero Ripetizioni">
+                            <input id="numberTutoring" class="inputNumber" name="ripetizioni" type="text"
+                                placeholder="numero Ripetizioni">
                         </div>
                         <div>
-                            <button id="btnInvia" type="button">Invia</button>
+                            <button id="btnInvia" type="button">Aggiungi</button>
                         </div>
                     </fieldset>
                 </div>
             </form>
 
-             <div class="formInterno">
-            <fieldset class="fieldsetCerca">
-                        <legend>Cerca il tuo esercizio</legend>
+            <div class="formInterno">
+                <fieldset class="fieldsetCerca">
+                    <legend>Cerca il tuo esercizio</legend>
                     <div id="exercise">
                         <input id="barRicerca" type="text" name="exercise" placeholder="Cerca il tuo esercizio">
                     </div>
@@ -64,65 +66,69 @@
                     </div>
                     <div id="selectOrdine">
                         <div id="select">
-                        <select id="filterExescise">
-                            <option value="">ordina: A - Z</option>
-                            <option value="">ordina: Z - A</option>
-                            <option value="">ordina: Serie</option>
-                            <option value="">ordina: Ripetizioni</option>
-                        </select>
-                            
-                       
-                    </div>
-                    
-                    </fieldset>
-                </div>
+                            <select id="filterExescise">
+                                <option value="">ordina: A - Z</option>
+                                <option value="">ordina: Z - A</option>
+                                <option value="">ordina: Serie</option>
+                                <option value="">ordina: Ripetizioni</option>
+                            </select>
 
-                <div class="divCrescente">
-                    <div>
-                        <p id="contatoreCompletati" class="contatore">0</p>
-                        <p >Completati</p>
-                    </div>
-                    <div>
-                        <p id="contatorePreferiti" class="contatore">0</p>
-                        <p >Preferiti</p>
-                    </div>
-                    <div>
-                        <p id="contatoreTutti" class="contatore">0</p>
-                        <p>Tutti</p>
-                    </div>
-                    <div id="barEsterna">
 
-                    </div>
+                        </div>
+
+                </fieldset>
+            </div>
+
+            <div class="divCrescente">
+                <div>
+                    <p id="contatoreCompletati" class="contatore">0</p>
+                    <p>Completati</p>
                 </div>
+                <div>
+                    <p id="contatorePreferiti" class="contatore">0</p>
+                    <p>Preferiti</p>
+                </div>
+                <div>
+                    <p id="contatoreTutti" class="contatore">0</p>
+                    <p>Tutti</p>
+                </div>
+                <div id="barEsterna">
+
+                </div>
+            </div>
 
 
             <div id="containerExercise" class="containerExercise">
                 <h4>I tuoi esercizi</h4>
-                
-             
+
+
                 <ul id="Lista"></ul>
             </div>
 
         </main>
         <footer>
-           <ul>
-            <span>Privacy e Cookies policy</span>
-            <li><a href="">Privacy e Cookies policy</a></li>
-            <li><a href="">Franchising</a></li>
-            <li><a href="">Lavora con noi</a></li>
-            <li><a href="">Informativa Privacy</a></li>
-           </ul>
-           <ul>
-            <span>Iscriviti alla newsletter</span>
-            <li>Vuoi restare sempre aggiornato sui nostri servizi?</li>
-            <li>Iscriviti subito alla nostra newsletter </li>
-            <li><button>Iscriviti alla newsletter</button></li>
-           </ul>
-           <ul>
-            <span>I nostri Club</span>
-            <li>CERCA IL CLUB PIU' VICINO A TE</li>
-                <li><input type="text" placeholder="posizione attuale"></li>
-           </ul>
+            <nav>
+                <ul>
+                    <span>Privacy e Cookies policy</span>
+
+                    <li><a href="">Privacy e Cookies policy</a></li>
+
+                    <li><a href="javascript.void(0)">Franchising</a></li>
+                    <li><a href="javascript.void(0)">Lavora con noi</a></li>
+                    <li><a href="javascript.void(0)">Informativa Privacy</a></li>
+                </ul>
+                <ul>
+                    <span>Iscriviti alla newsletter</span>
+                    <li>Vuoi restare sempre aggiornato sui nostri servizi?</li>
+                    <li>Iscriviti subito alla nostra newsletter </li>
+                    <li><button>Iscriviti alla newsletter</button></li>
+                </ul>
+                <ul>
+                    <span>I nostri Club</span>
+                    <li>CERCA IL CLUB PIU' VICINO A TE</li>
+                    <li><input type="text" placeholder="posizione attuale"></li>
+                </ul>
+            </nav>
         </footer>
     </div>
 </body>

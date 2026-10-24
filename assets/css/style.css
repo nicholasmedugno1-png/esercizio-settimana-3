@@ -38,11 +38,6 @@ input:focus{
    border-radius: 2px;
     }
 
-    /* non riuscivo a togliere le freccette ho messo type text */
-/* .inputNumber {
-    width: 30px;
-} */  
-
 
 header {
     background-color: #0F172A;
@@ -126,8 +121,11 @@ fieldset select {
 }
 
 .fieldsetCerca input{
-    padding: 20px 190px;
+    padding: 3px 10px;
+    width: 300px;
+    height: 40px;
 }
+
  
 .fieldsetCerca select,
 fieldset button {
@@ -148,7 +146,7 @@ fieldset button {
     padding: 9px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.103);
     text-align: center;
-    border-radius: 5px;
+    border-radius: 8px;
 }
 
 .divCrescente div {
@@ -170,7 +168,7 @@ fieldset button {
 /* container principali */
 .containerExercise {
     background-color: white;
-    border-radius: 5px;
+    border-radius: 8px;
     margin: 0 auto;
     width: 80%;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.103);
@@ -187,21 +185,23 @@ fieldset button {
     text-align: center;
     font-weight: 700;
     margin-bottom: 15px;
+    font-size: 2em;
 }
 
 
 /* SEZIONE LISTA CREATA CON JS */
 #Lista {
     width: 90%;
-    margin: 10px auto;
+    margin: 0px auto;
     list-style: none;
+    font-size: 1.5em;
 }
 
 
 .liLista {
     background-color: #f8f9fa;
-    margin-bottom: 6px;
-    padding: 10px 15px;
+    margin-bottom: 16px;
+    padding: 20px 15px;
     border-left: 3px solid #334155;
     border-radius: 10px;
 }
@@ -212,24 +212,26 @@ fieldset button {
     border-left: 3px solid #10b981;
 }
 
-
-
-#Lista li span:first-child {
-    font-size: small;
-    font-weight: bolder;
-     
+/*  mostra i nemeri della serie e delle ripetizioni */
+.taskSeries {
+    margin: 0 40px;
+    background-color: #0F172A;
+    color: #fdf3de;
+    border-radius: 10px;
+    padding: 2px 4px;
+    font-size: 0.7em;
+    font-weight: 400;
 }
-
 
 /* SEZIONE BOTTONI */
 .btnAggiungi,
  .btnCompletato{
-    font-size: 0.9rem;
+     font-size: 0.8em;
     font-weight: 400;
     background-color: #f8f9fa;
     border: none;
     display: inline-block;
-
+margin-right: 10px;
 }
 
 .btnCompletato:hover,
@@ -259,19 +261,10 @@ fieldset button {
     margin-right: 3px;
 }
 
-/* sezione che mostra i nemeri della serie e delle ripetizioni */
-.taskSeries {
-    margin: 0 40px;
-    background-color: #0F172A;
-    color: #fdf3de;
-    border-radius: 10px;
-    padding: 2px 4px;
-    font-size: 0.7em;
-    font-weight: 400;
-}
- 
-    
 
+.btnModifica:focus {
+    background-color: none;
+}
 
 /* SEZIONE BTN DARKMODE */
 .btnDarkMode {
@@ -288,6 +281,10 @@ fieldset button {
 .btnDarkMode:focus {
     background: none;
 }
+ 
+    
+
+
 
     
 
