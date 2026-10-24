@@ -239,6 +239,8 @@ lista.addEventListener('click', (e) => {
     alert('Hai completato l\'esercizio');
   }
 
+
+  //ATTIVAZIONE MODIFICA BOTTONE
   if (e.target.classList.contains('btnModifica') || e.target.closest('.btnModifica')) {
     const targetBtn = e.target.closest('.btnModifica');
     console.log(`Hai premuto btnModifica con id: ${targetBtn.id}`);
@@ -249,7 +251,7 @@ lista.addEventListener('click', (e) => {
 
     if (!isEditing) {
       // Attiva la modalità modifica trasformando il testo in input
-      targetBtn.classList.add('in-modifica');
+      targetBtn.classList.add('inModifica');
       targetBtn.textContent = '💾';
       targetBtn.setAttribute('title', 'Salva le modifiche');
 
@@ -258,7 +260,7 @@ lista.addEventListener('click', (e) => {
       const btnModifica = document.createElement('button');
     btnModifica.type = 'button';
     btnModifica.id = `modifica-${indexId + 1}`;
-    btnModifica.className = 'btnLi btnModifica inModifica inputNumber';
+    btnModifica.className = 'btnLi btnModifica inModifica inputNumber btnDarkMode';
     btnModifica.title = 'Salva le modifiche';
     btnModifica.textContent = '💾';
     liElement.appendChild(btnModifica);
