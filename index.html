@@ -20,24 +20,27 @@
                 <h1>FitEpic</h1>
                 <p>il tuo personal trainer digitale</p>
             </div>
-            <button id="Lightmode"><i class="fa-solid fa-toggle-off"></i></button>
+            <div>
+                <button id="LightMode" class="LightMode">🌙</button>
+            </div>
         </header>
+
         <main>
             <form action="">
                 <div class="formInterno">
                     <fieldset>
                         <legend>Aggiungi il tuo esercizio</legend>
                         <div id="exercise">
-                            
+                            <label for="InputExercise">Nome esercizio:</label>
                             <input id="InputExercise" type="text" name="exercise" placeholder="Inserisci l'esercizio">
                         </div>
                         <div id="series">
-                            
-                            <input id="numberSerie" type="number" name="serie"  placeholder="numero Serie">
+                            <label for="numberSerie">Serie:</label>
+                            <input id="numberSerie" class="inputNumber" type="text" name="serie"  placeholder="numero Serie">
                         </div>
                         <div id="tutoring">
-                            
-                            <input id="numberTutoring" name="ripetizioni" type="number" placeholder="numero Ripetizioni">
+                            <label for="numberTutoring">Ripetizioni:</label>
+                            <input id="numberTutoring" class="inputNumber" name="ripetizioni" type="text" placeholder="numero Ripetizioni">
                         </div>
                         <div>
                             <button id="btnInvia" type="button">Invia</button>
@@ -47,12 +50,9 @@
             </form>
 
              <div class="formInterno">
-<fieldset>
-                        <legend>Cerca il tuo esercio</legend>
+            <fieldset class="fieldsetCerca">
+                        <legend>Cerca il tuo esercizio</legend>
                     <div id="exercise">
-                        <p>completati</p>
-                        <p>preferiti</p>
-                        <p>tutti</p>
                         <input id="barRicerca" type="text" name="exercise" placeholder="Cerca il tuo esercizio">
                     </div>
                     <div id="selectFiltri">
@@ -65,7 +65,6 @@
                     <div id="selectOrdine">
                         <div id="select">
                         <select id="filterExescise">
-                            <option value=""></option>
                             <option value="">ordina: A - Z</option>
                             <option value="">ordina: Z - A</option>
                             <option value="">ordina: Serie</option>
@@ -78,10 +77,28 @@
                     </fieldset>
                 </div>
 
+                <div class="divCrescente">
+                    <div>
+                        <p id="contatoreCompletati" class="contatore">0</p>
+                        <p >Completati</p>
+                    </div>
+                    <div>
+                        <p id="contatorePreferiti" class="contatore">0</p>
+                        <p >Preferiti</p>
+                    </div>
+                    <div>
+                        <p id="contatoreTutti" class="contatore">0</p>
+                        <p>Tutti</p>
+                    </div>
+                    <div id="barEsterna">
 
-            <div id="containerExercise">
-                <h4>I tuoi esercio</h4>
-                <div id="barEsterna"></div>
+                    </div>
+                </div>
+
+
+            <div id="containerExercise" class="containerExercise">
+                <h4>I tuoi esercizi</h4>
+                
              
                 <ul id="Lista"></ul>
             </div>

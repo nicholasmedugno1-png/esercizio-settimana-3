@@ -4,6 +4,7 @@
 //una barra di ricerca che ti permette di cercare l esercizi inseriti e 
 // una select che filtra per preferiti e completati
 // una select che mette in ordine gli esercizi !non ancora funzionante
+//barra di progresso che aumenta con esercizi completati e diminuisce se vengono eliminati !non funzionante
 //un bottone che ti permette di eliminare i vari esercizi
 //un campo nel footer per cercare le strutture nella zona !non funzionante
 
@@ -12,15 +13,17 @@ const InputExercise = document.querySelector('#InputExercise')
 const numberSerie = document.querySelector('#numberSerie')
 const numberTutoring = document.querySelector('#numberTutoring')
 const lista = document.querySelector('#Lista')
-const Lightmode = document.querySelector('#Lightmode')
+const LightMode = document.querySelector('#LightMode')
 const barRicerca = document.querySelector('#barRicerca')
 const filterExescise = document.querySelector('#filterExescise')
+const form = document.querySelector('form')
+
 
 const myExercise = [
   {
     nameExercise: "Panca Piana Bilanciere",
     numSeries: "4",
-    numTutoring: 7, 
+    numTutoring: 7,
   },
   {
     nameExercise: "Squat con Bilanciere",
@@ -68,127 +71,262 @@ const myComplet = []
 
 //AGGIUNGI ESERCIZIO
 btnInvia.addEventListener('click', () => {
-if(InputExercise.value !== ''){
-	lista.textContent = ''		//ripuliamo la lista altrimenti stampa sempre tutto l'array
-	const nuovoOggettoTask = {     //creiamo l oggetto da inserire e gli assegniamo i valori estratti dall input
-           nameExercise: InputExercise.value,
-           numSeries: numberSerie.value,
-           numTutoring: numberTutoring.value
-	};
-	myExercise.push(nuovoOggettoTask)	//pushiamo l oggetto creato nell'array
-	InputExercise.value = ''			//ripuliamo il campo di input dopo il click
-	aggiungiTask();					//richiamiamo la funzione per aggiungere a schermo avendo ripulito il contenuto dell array stampa solo l oggetto creato
-				//aggiorniamo il contatore dopo aver aaggiunto l oggetto
-} 
+  if (InputExercise.value !== '') {
+    lista.textContent = ''
+    const nuovoOggettoTask = {
+      nameExercise: InputExercise.value,
+      numSeries: numberSerie.value,
+      numTutoring: numberTutoring.value
+    };
+    myExercise.push(nuovoOggettoTask)
+    // InputExercise.value = '';
+    aggiungiTask();
+  contatore()
+  form.reset()
+  }
 })
 
 function aggiungiTask(arrayDaStampare = myExercise) {
-    lista.textContent = ''	
-	arrayDaStampare.forEach((task, index) => {
-		const newLi = document.createElement('li');
-    newLi.classList.add('liLista')
-		
-		const textExercise = document.createElement('span');
-		textExercise.textContent = task.nameExercise;
-		newLi.appendChild(textExercise);
-
-        // const singoloTutoring = task.numTutoring
-		const taskSeries = document.createElement('span');
-		 taskSeries.classList.add('taskSeries')
-		taskSeries.textContent = ` ${task.numSeries} serie da ${task.numTutoring} ripetizioni`
-		newLi.appendChild(taskSeries);
+  lista.textContent = ''
+//controllo se la dark mode e attiva
+const darkModeAttiva = document.querySelector('body').classList.contains('darkMode');
+  
+  arrayDaStampare.forEach((task, index) => {
 
     
-        const aggiungiAPreferiti = document.createElement('button');
-		aggiungiAPreferiti.textContent = 'Aggiungi a preferiti';
-		aggiungiAPreferiti.setAttribute('type', 'button')
-		aggiungiAPreferiti.setAttribute('id', `aggiungi-${index + 1}`)
-        aggiungiAPreferiti.classList.add('btnAggiungi')
-        aggiungiAPreferiti.classList.add('btnLi')
-		newLi.appendChild(aggiungiAPreferiti);
-        
+    const newLi = document.createElement('li');
+    newLi.classList.add('liLista');
     
+//BOTTONE MODIFICA 
+    const btnModifica = document.createElement('button');
+    btnModifica.textContent = '📝';
+    btnModifica.setAttribute('type', 'button');
+    btnModifica.setAttribute('id', `modifica-${index + 1}`);   
+    btnModifica.setAttribute('title', 'modifica il tuo esercizio')
+    btnModifica.classList.add('btnLi');
+    btnModifica.classList.add('btnModifica');
+    newLi.appendChild(btnModifica);
+
+//TESTO ESERCIZIO
+    const textExercise = document.createElement('span');
+    textExercise.textContent = task.nameExercise;
+    newLi.appendChild(textExercise);
+
+    //SERIE E RIPETIZIONI
+    const taskSeries = document.createElement('span');
+    taskSeries.classList.add('taskSeries');
+    taskSeries.textContent = ` ${task.numSeries} serie da ${task.numTutoring} ripetizioni`;
+    newLi.appendChild(taskSeries);
+
+//BOTTONE PER AGGIUGERE AI PREFERITI
+    const aggiungiAPreferiti = document.createElement('button');
+    aggiungiAPreferiti.setAttribute('type', 'button');
+    aggiungiAPreferiti.setAttribute('id', `aggiungi-${index + 1}`);
+    aggiungiAPreferiti.setAttribute('title', 'aggiungi ai preferiti');
+    aggiungiAPreferiti.classList.add('btnAggiungi' , 'btnLi');
+   const isPreferito = MyPreferit.some(t => t.nameExercise === task.nameExercise);  //usiamo some per ottenere un valore booleano 
+   aggiungiAPreferiti.textContent = !isPreferito ? '☆' : '⭐';  
+   newLi.appendChild(aggiungiAPreferiti);
+    
+//BTN PER AGGIUNGERE AI COMPLETATI
     const btnCompletato = document.createElement('button');
-		btnCompletato.textContent = 'Completato';
-		btnCompletato.setAttribute('type', 'button')
-		btnCompletato.setAttribute('id', `modifica-${index + 1}`)
-    btnCompletato.classList.add('btnLi')
-        btnCompletato.classList.add('btnCompletato')
-		newLi.appendChild(btnCompletato);
-		
+    btnCompletato.textContent = 'Completato';
+    btnCompletato.setAttribute('type', 'button');
+    btnCompletato.setAttribute('id', `completato-${index + 1}`);
+    btnCompletato.classList.add('btnLi', 'btnCompletato');
+    newLi.appendChild(btnCompletato);
 
 
-        const elimina = document.createElement('button');
-		elimina.textContent = 'X';
-		elimina.setAttribute('type', 'button')
-		elimina.setAttribute('id', index + 1)
-        elimina.classList.add('btnElimina')
-        elimina.classList.add('btnLi')
-		newLi.appendChild(elimina);
-		
-        
-		lista.appendChild(newLi);
+//BTN PER ELIMINARE
+    const elimina = document.createElement('button');
+    elimina.textContent = 'X';
+    elimina.setAttribute('type', 'button');
+    elimina.setAttribute('id', index + 1);
+    elimina.classList.add('btnElimina', 'btnLi');
+    newLi.appendChild(elimina);
+
+//assegniamo di nuovo la classe prima di creare gli elementi per evitare che esca dalla darkmode 
+// si attiva solo se il body ha la classe dark mode attiva
     
-    
-	});
+if(darkModeAttiva) {
+      newLi.classList.add('ListaDarkMode');
+    elimina.classList.toggle('btnDarkMode');
+    btnCompletato.classList.toggle('btnDarkMode');
+    btnModifica.classList.toggle('btnDarkMode');
+    aggiungiAPreferiti.classList.toggle('btnDarkMode');
+    btnInvia.classList.toggle('btnDarkMode')
+    }
+
+    lista.appendChild(newLi);
+
+
+  });
 }
 aggiungiTask(myExercise);
+contatore()
+
 
 //gestione btn nei li tramite classi aggiunte con js
 lista.addEventListener('click', (e) => {
-    e.preventDefault()
-    if(e.target.classList.contains('btnElimina')) {
-        const indiceDaEliminare = Number(e.target.id) - 1;
-        console.log(`Hai premuto il tasto Elimina con ID: ${e.target.id}`);
-        myExercise.splice(indiceDaEliminare, 1);
-        aggiungiTask();
-        alert('hai eliminato l\'esercizio')
-      }
-        
-      if (e.target.classList.contains('btnAggiungi')) {
-          console.log(`Hai premuto aggiungiPreferiti con id: ${e.target.id}`);
-         const indexId = Number(e.target.id.replace('aggiungi-', '')) - 1;
-          const esercizioSelezionato = myExercise[indexId];   
-          MyPreferit.push(esercizioSelezionato)
-          console.log(MyPreferit)
-          alert('Hai aggiunto l\'esercizio ai preferiti')
+  e.preventDefault();
+  // A OGNI CLICK TROVIAMO L INDICE CHE CORRISPONDE AL BTNPREMUTO
+  if (e.target.classList.contains('btnElimina')) {
+    const indiceDaEliminare = Number(e.target.id) - 1; //traformiamo il valore ritornato in numero e gli togliamo -1 per far combaciare gli id
+    console.log(`Hai premuto il tasto Elimina con ID: ${e.target.id}`);
+    //controlliamo la select dei filtri e stampiamo l array giusto per ogni option
+    if(filterExescise.value === 'preferiti') {
+      MyPreferit.splice(indiceDaEliminare, 1);
+      aggiungiTask(MyPreferit);
+      contatore()
+    }
+    if(filterExescise.value === 'completati') {
+      myComplet.splice(indiceDaEliminare, 1);
+      aggiungiTask(myComplet);
+    contatore()
+    }
+    if(filterExescise.value === 'tutti') {
+      myExercise.splice(indiceDaEliminare, 1);
+      aggiungiTask(myExercise);
+      contatore()
+    }
+    alert('hai eliminato l\'esercizio');
+  }
+
+  if (e.target.classList.contains('btnAggiungi')) {
+    console.log(`Hai premuto aggiungiPreferiti con id: ${e.target.id}`);
+    const indexId = Number(e.target.id.replace('aggiungi-', '')) - 1;  //facciamo combaciare gli indici con gli id  
+    const esercizioSelezionato = myExercise[indexId];
+    MyPreferit.push(esercizioSelezionato);
+    console.log(MyPreferit);
+    contatore()
+    alert('Hai aggiunto l\'esercizio ai preferiti');
+   
+  }
+
+  if (e.target.classList.contains('btnCompletato')) {
+    console.log(`Hai premuto btnCompletato con id: ${e.target.id}`);
+    const indexId = Number(e.target.id.replace('completato-', '')) - 1;
+    const esercizioCompletato = myExercise[indexId];
+    myComplet.push(esercizioCompletato);
+    console.log(myComplet);
+    contatore()
+    alert('Hai completato l\'esercizio');
+  }
+
+  if (e.target.classList.contains('btnModifica') || e.target.closest('.btnModifica')) {
+    const targetBtn = e.target.closest('.btnModifica');
+    console.log(`Hai premuto btnModifica con id: ${targetBtn.id}`);
+    const indexId = Number(targetBtn.id.replace('modifica-', '')) - 1;
+    const liElement = targetBtn.closest('li');
+    
+    const isEditing = targetBtn.classList.contains('inModifica');   // controlliamo s contiene la classe
+
+    if (!isEditing) {
+      // Attiva la modalità modifica trasformando il testo in input
+      targetBtn.classList.add('in-modifica');
+      targetBtn.textContent = '💾';
+      targetBtn.setAttribute('title', 'Salva le modifiche');
+
+      const esercizio = myExercise[indexId];
+      liElement.textContent = '';
+      const btnModifica = document.createElement('button');
+    btnModifica.type = 'button';
+    btnModifica.id = `modifica-${indexId + 1}`;
+    btnModifica.className = 'btnLi btnModifica inModifica inputNumber';
+    btnModifica.title = 'Salva le modifiche';
+    btnModifica.textContent = '💾';
+    liElement.appendChild(btnModifica);
+
+const inputNome = document.createElement('input');
+    inputNome.type = 'text';
+    inputNome.className = 'esercizioName';
+    inputNome.value = esercizio.nameExercise;
+    liElement.appendChild(inputNome);
+
+    const labelSerie = document.createElement('label');
+    labelSerie.textContent = 'Serie:'
+    liElement.appendChild(labelSerie);
+
+    const inputSerie = document.createElement('input');
+    inputSerie.type = 'text';
+    inputSerie.className = 'eserciozSeries inputNumber';
+    inputSerie.value = esercizio.numSeries;
+    liElement.appendChild(inputSerie);
+
+const labelRipetizioni = document.createElement('label');
+labelRipetizioni.textContent = 'ripetizioni:'
+    liElement.appendChild(labelRipetizioni);
+
+    const inputRipetizioni = document.createElement('input');
+    inputRipetizioni.type = 'text';
+    inputRipetizioni.className = 'edit-tutoring inputNumber';
+    inputRipetizioni.value = esercizio.numTutoring;
+    liElement.appendChild(inputRipetizioni);
+
+    } else {
+      //  estraiamo valore esatto scritto dall'utente negli input in questo momento
+      const nuovoNome = liElement.querySelector('.esercizioName').value;
+      const nuoveSerie = liElement.querySelector('.eserciozSeries').value;
+      const nuoveRipetizioni = liElement.querySelector('.edit-tutoring').value;
+
+
+      //  ricrea l'elemento nell'array principale usando i nuovi valori
+      if (nuovoNome.trim() !== '') {
+        myExercise[indexId] = {
+          nameExercise: nuovoNome,
+          numSeries: nuoveSerie,
+          numTutoring: nuoveRipetizioni
+        };
+
       }
       
-      if (e.target.classList.contains('btnCompletato')) {
-          console.log(`Hai premuto btnCompletato con id: ${e.target.id}`);
-         const indexId = Number(e.target.id.replace('modifica-', '')) - 1;
-          const esercizioCompletato = myExercise[indexId];
-          myComplet.push(esercizioCompletato)
-          console.log(myComplet)
-          
-      }
-
-})
+      
+      aggiungiTask();
+      contatore()
+    }
+  }
+    })
 
 //DARK MODE
 
-Lightmode.addEventListener('click', () => {
-  document.querySelector('body').classList.toggle('darkMode');
+LightMode.addEventListener('click', () => {
   
- const liDark = document.querySelectorAll('.liLista')
-  liDark.forEach(task => {
-  task.classList.toggle('ListaDarkMode');
-    });
-    const btnLi = document.querySelectorAll('.btnLi');
-    btnLi.forEach( btn => {
-      btn.classList.toggle('btnDarkMode')
-    })
+  LightMode.classList.toggle('darkModeBtn')
+  const isDarkMode = document.querySelector('body').classList.toggle('darkMode');
+
+  
+  LightMode.textContent = isDarkMode ? '🌞' : '🌙';
+
+  const containerExercise = document.querySelector('#containerExercise');
+  containerExercise.classList.toggle('containerExerciseDarkMode');
+  const formInterno = document.querySelectorAll('.formInterno');
+  formInterno.forEach((task) => {
+
+    task.classList.toggle('containerExerciseDarkMode');
   })
-      
-      
+
+
+  const liDark = document.querySelectorAll('.liLista')
+  liDark.forEach(task => {
+    task.classList.toggle('ListaDarkMode');
+  });
+  const btnLi = document.querySelectorAll('.btnLi');
+  btnLi.forEach(btn => {
+    btn.classList.toggle('btnDarkMode');
+  })
+  btnInvia.classList.toggle('btnDarkMode');
+
+})
+
+
 //funzione per ricerca live
 
 barRicerca.addEventListener('input', (e) => {
   const cercaEsercizio = e.target.value.trim();
-  const filtroArray = myExercise.filter( task => 
-    task.nameExercise.toLowerCase().includes(cercaEsercizio)
-  );
-  aggiungiTask(filtroArray)
+  const filtroArray = myExercise.filter(task =>
+    task.nameExercise.toLowerCase().includes(cercaEsercizio));
+  aggiungiTask(filtroArray);
+  contatore()
 })
 
 
@@ -196,26 +334,30 @@ barRicerca.addEventListener('input', (e) => {
 
 filterExescise.addEventListener('change', (e) => {
   const selettoreScelto = e.target.value;
-  if(selettoreScelto === 'preferiti'){
+  if (selettoreScelto === 'preferiti') {
     aggiungiTask(MyPreferit)
-  } else if( MyPreferit.length === 0) {
+    contatore()
+  } 
 
-    
-   let oggettoVuoto = {
-      nameExercise: "inserisci esercizio ai preferiti",
-    numSeries: 'insisci' ,
-    numTutoring: 'inseri',
-    }
-    MyPreferit.push(oggettoVuoto)
-    aggiungiTask(MyPreferit)
-  } 
-  
-  if(selettoreScelto === 'completati') {
+  if (selettoreScelto === 'completati') {
     aggiungiTask(myComplet)
-  } 
-  if(selettoreScelto === 'tutti') {
+    contatore()
+  }
+  if (selettoreScelto === 'tutti') {
     aggiungiTask(myExercise)
+    contatore()
   }
 })
 
+//funzione modifica esercizio 
 
+
+function contatore() {
+const contoTotale = document.querySelector('#contatoreTutti')
+const contoPreferiti = document.querySelector('#contatorePreferiti')
+
+const contoCompletati = document.querySelector('#contatoreCompletati')
+  contoTotale.textContent = myExercise.length
+  contoPreferiti.textContent = MyPreferit.length
+  contoCompletati.textContent = myComplet.length
+}

@@ -10,27 +10,44 @@
 
 body {
     font-family: 'roboto';
-    background-color: rgb(233, 233, 233);
+    background-color: #F8FAFC;
+    color: #0F172A;
 }
 
 
 
 .darkMode {
-    background-color: black;
+    background-color: #1e293b;
     color: white;
 }
-
-
-
 
 main {
     margin: 0 auto;
     max-width: 100%;
 }
 
+input{
+    border-radius: 3px;
+    border: none;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.103);
+}
+
+input:focus{
+   border: 1px solid #fdf3de;
+   outline: none;
+   border-radius: 2px;
+    }
+
+    /* non riuscivo a togliere le freccette ho messo type text */
+/* .inputNumber {
+    width: 30px;
+} */  
+
+
 header {
-    background-color: darkslateblue;
+    background-color: #0F172A;
     width: 100%;
+    text-align: start;
 
 }
 
@@ -38,23 +55,93 @@ button {
     cursor: pointer;
 }
 
+
 #titleGenerale {
     padding-bottom: 10px;
     color: antiquewhite;
     display: inline-block;
     vertical-align: bottom;
     font-weight: 900;
+    font-size: 1.5em;
 }
 
 #imgLogo {
-    width: 90px;
-    height: 90px;
-    background-image: url(../img/logoPalestra.png);
+    width: 200px;
+    height: 100px;
+    background-image: url(../img/logo-palestra.png);
     background-position: center;
+    background-size: cover;
+    display: inline-block;
+    
+}
+/* BTN DARKMODE STILE */
+.LightMode {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+}
+/* BTN DARK MODE POSIZIONE */
+header div:nth-child(3) {
+        float: right;
+        margin-top: 60px;
+        margin-right: 10px;
+}
+
+
+.formInterno {
+    margin-top: 30px;
+    width: 70%;
+    margin: 30px auto;
+    padding: 19px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.103);
+    text-align: center;
+    border-radius: 8px;
+}
+
+.formInterno div {
     display: inline-block;
 }
 
-.formInterno {
+/* SEZIONE FILDSET */
+fieldset {
+    border-radius: 8px;
+    padding: 19px;
+}
+
+fieldset label {
+    font-size: 1.2em;
+}
+
+
+fieldset input {
+margin-right: 25px ;
+padding: 8px;
+border-radius: 8px;
+}
+
+
+
+fieldset select {
+    margin-left: 80px;
+}
+
+.fieldsetCerca input{
+    padding: 20px 190px;
+}
+ 
+.fieldsetCerca select,
+fieldset button {
+    font-size: medium;
+    background-color: #0F172A;
+    color: #f8f9fa;
+    border: none;
+    padding: 4px 7px;
+    border-radius: 4px;
+}
+
+
+/* div con barra crescente */
+.divCrescente {
     margin-top: 30px;
     width: 70%;
     margin: 30px auto;
@@ -64,16 +151,36 @@ button {
     border-radius: 5px;
 }
 
-.formInterno div {
+.divCrescente div {
     display: inline-block;
+    margin: 10px;
+    text-align: center;
 }
 
-#containerExercise {
+#barEsterna {
+
+    margin-left: 150px;
+    background-color: rgb(2, 15, 15);
+    width: 550px;
+    height: 13px;
+    border-radius: 4px;
+
+}
+
+/* container principali */
+.containerExercise {
+    background-color: white;
     border-radius: 5px;
     margin: 0 auto;
     width: 80%;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.103);
+    padding: 4px;
+    margin-bottom: 15px;
 
+}
+
+.containerExerciseDarkMode {
+    background-color: #0F172A;
 }
 
 #containerExercise h4 {
@@ -82,16 +189,8 @@ button {
     margin-bottom: 15px;
 }
 
-#barEsterna {
 
-    margin: 0 auto;
-    background-color: rgb(2, 15, 15);
-    width: 80%;
-    height: 8px;
-    border-radius: 4px;
-
-}
-
+/* SEZIONE LISTA CREATA CON JS */
 #Lista {
     width: 90%;
     margin: 10px auto;
@@ -100,62 +199,53 @@ button {
 
 
 .liLista {
-    background-color: #fdf3de;
+    background-color: #f8f9fa;
     margin-bottom: 6px;
     padding: 10px 15px;
-    border-left: 3px solid slateblue;
-    border-radius: 15px;
+    border-left: 3px solid #334155;
+    border-radius: 10px;
 }
 
 .ListaDarkMode {
-    background-color: blue;
+    background-color: #334155;
     color: #0e0c0a;
+    border-left: 3px solid #10b981;
 }
+
 
 
 #Lista li span:first-child {
     font-size: small;
     font-weight: bolder;
+     
 }
 
 
-
-.btnAggiungi {
-    
-    background-color: #fdf3de;
+/* SEZIONE BOTTONI */
+.btnAggiungi,
+ .btnCompletato{
+    font-size: 0.9rem;
+    font-weight: 400;
+    background-color: #f8f9fa;
     border: none;
     display: inline-block;
 
 }
 
-.btnCompletato {
-    background-color: #fdf3de;
-    border: none;
-    display: inline-block;
-    }
-    
-.btnCompletato:hover {
+.btnCompletato:hover,
+ .btnAggiungi:hover{
      background-color: black;
-    border-radius: 3px;
-    color: white;
-}
-
-.btnAggiungi:hover {
-    background-color: black;
-    border-radius: 3px;
-    color: white;
+     color: white;
+     border-radius: 3px;
 }
 
 .btnElimina {
-    background-color: #fdf3de;
+    background-color: #f8f9fa;
     color: brown;
     border: none;
     margin-left: 10px;
     float: right;
 }
-
-
-
 
 .btnElimina:hover {
     background-color: black;
@@ -163,35 +253,56 @@ button {
     border-radius: 3px;
 }
 
+.btnModifica {
+    background-color: #f8f9fa;
+    border: none;
+    margin-right: 3px;
+}
 
-
-
+/* sezione che mostra i nemeri della serie e delle ripetizioni */
 .taskSeries {
-    margin: 0 15px;
-    background-color: black;
+    margin: 0 40px;
+    background-color: #0F172A;
     color: #fdf3de;
     border-radius: 10px;
     padding: 2px 4px;
-    font-size: 0.5em;
+    font-size: 0.7em;
+    font-weight: 400;
 }
+ 
     
 
 
-fieldset {
-    border-radius: 8px;
-}
-
+/* SEZIONE BTN DARKMODE */
 .btnDarkMode {
     background: none;
-    color: rgb(0, 0, 0);
+    color: #fdf3de;
 }
 
+.btnDarkMode:hover {
+    background-color: #10b981;
+    color: black;
+    border-radius: 3px;
+}
+
+.btnDarkMode:focus {
+    background: none;
+}
+
+    
+
+/* SEZIONE FOOTER */
 footer {
+    color: #fdf3de;
     margin: 0 auto;
-    background-color: darkslateblue;
+    background-color: #0F172A;
     text-align: center;
     width: 100%;
     padding: 15px;
+    }
+    footer span {
+        font-size: 1.5em;
+        margin-left: 6px;
     }
 
 footer ul {
@@ -199,39 +310,51 @@ footer ul {
     vertical-align: top;
     list-style: none;
     text-align: start;
-    margin-left: 40px;
+}
+
+footer ul:not(:last-child){
+    margin-right: 290px;
 }
 
 footer ul li {
     margin: 8px;
-    font-size: x-small;
+    font-size: small;
+    
 }
 
 footer ul li a {
     text-decoration: none;
-    color: #0e0c0a;
+    color: #fdf3de;
 }
 
 footer ul li a:hover {
-    color: bisque;
+    color: white;
 }
 
 footer ul li button {
-background-color: darkslateblue;
+background-color: #0F172A;
+color: white;
 border: none;
 }
     
 footer ul li button:hover {
-    background-color: #0e0c0a;
+    background-color: #10b981;
     color: #fdf3de;
     border-radius: 8px;
     padding: 2px 3px;
 }
 
-footer ul li input:focus{
-   border: 1px solid white;
-   outline: none;
-   border-radius: 2px;
-    }
 
-    
+.contatore {
+    width: 100%;
+    height: 100%;
+    font-size: 2em;
+    font-weight: bold;
+    color: #5672b3;
+}
+
+
+
+
+
+
